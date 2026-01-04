@@ -12,14 +12,6 @@
   <img src="framework.png" width="800"/>
 </p>
 
-EPT introduces a novel parameter-efficient fine-tuning approach that leverages **expert-specific convolutional kernels with multi-scale perception** for mixture-of-LoRA architectures. Our method achieves state-of-the-art performance on GLUE benchmark while maintaining parameter efficiency.
-
-### Key Contributions
-
-- 🔹 **Multi-scale Expert Kernels**: Heterogeneous kernel sizes (2, 4, 6, 8) enable experts to capture features at different granularities
-- 🔹 **Task-aware Routing**: Dynamic expert selection based on input task characteristics
-- 🔹 **Pyramid Architecture**: Hierarchical expert structure for efficient task specialization
-
 ## 🔧 Environment Setup
 
 ### Prerequisites
@@ -83,7 +75,6 @@ EPT/
 |---------|--------|-----------|
 | **GLUE** | [GLUE Benchmark](https://gluebenchmark.com/tasks) | NLU |
 | **BoolQ, CB** | [SuperGLUE Benchmark](https://super.gluebenchmark.com/tasks) | QA / NLI |
-| **SciTail** | [Hugging Face](https://huggingface.co/datasets/allenai/scitail) | NLI |
 
 ## 🚀 Training
 
