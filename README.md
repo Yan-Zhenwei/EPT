@@ -12,7 +12,6 @@ Expert Pyramid Tuning: Efficient Parameter Fine-Tuning for Task Allocation Based
 
 - **GLUE**: [GLUE Benchmark](https://gluebenchmark.com/tasks)
 - **BoolQ, CB**: [SuperGLUE Benchmark](https://super.gluebenchmark.com/tasks)
-- **SciTail**: [SciTail Dataset on Hugging Face](https://huggingface.co/datasets/allenai/scitail)
 
 ## Train
 
