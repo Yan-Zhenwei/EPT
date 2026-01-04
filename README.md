@@ -70,10 +70,8 @@ EPT/
 
 ## 📊 Datasets
 
-| Dataset | Source | Task Type |
-|---------|--------|-----------|
-| **GLUE** | [GLUE Benchmark](https://gluebenchmark.com/tasks) | NLU |
-| **BoolQ, CB** | [SuperGLUE Benchmark](https://super.gluebenchmark.com/tasks) | QA / NLI |
+- **GLUE**: [GLUE Benchmark](https://gluebenchmark.com/tasks)
+- **Commonsense**: BoolQ, PIQA, OpenBookQA, ARC-Easy, ARC-Challenge
 
 ## 🚀 Training
 
