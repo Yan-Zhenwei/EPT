@@ -11,7 +11,14 @@
   <img src="framework.png" width="800"/>
 </p>
 
-Parameter-Efficient Fine-Tuning (PEFT) has become a dominant paradigm for deploying LLMs in multi-task scenarios due to its extreme parameter efficiency. While Mixture-of-Experts (MoE) based LoRA variants have achieved promising results by dynamically routing tokens to different low-rank experts, they largely overlook the hierarchical nature of task complexity. Existing methods typically employ experts with uniform architectures, limiting their ability to capture diverse feature granularities required by distinct tasks—where some tasks demand high-level semantic abstraction while others require fine-grained syntactic manipulation. To bridge this gap, we propose **Expert Pyramid Tuning (EPT)**, a novel architecture that integrates the multi-scale feature pyramid concept from computer vision into the realm of PEFT. Unlike standard LoRA, EPT decomposes task adaptation into two stages: (1) A shared meta-knowledge Subspace that encodes universal linguistic patterns in low dimensions; (2) A Pyramid Projection Mechanism that utilizes learnable up-projection operators to reconstruct high-dimensional features at varying scales. A task-aware router then dynamically selects the optimal combination of these multi-scale features. Extensive experiments across multiple multi-task benchmarks demonstrate that EPT significantly outperforms SOTA MoE-LoRA variants. Crucially, EPT achieves this performance gain without introducing additional inference latency, thanks to the re-parameterization capability of our design.
+**EPT** is a novel parameter-efficient fine-tuning method that integrates the multi-scale feature pyramid concept into MoE-LoRA architectures.
+
+### Key Features
+
+- 🔹 **Shared Meta-knowledge Subspace**: Encodes universal linguistic patterns in low dimensions
+- 🔹 **Pyramid Projection Mechanism**: Reconstructs high-dimensional features at varying scales
+- 🔹 **Task-aware Router**: Dynamically selects optimal multi-scale feature combinations
+- 🔹 **Zero Additional Latency**: Re-parameterization enables efficient inference
 
 ## 🔧 Environment Setup
 
@@ -72,7 +79,7 @@ EPT/
 
 ## 📊 Datasets
 
-- **GLUE**: [GLUE Benchmark](https://gluebenchmark.com/tasks)
+- **GLUE**: CoLA, MNLI, MRPC, QNLI, QQP, RTE, SST-2, STS-B
 - **Commonsense**: BoolQ, PIQA, OpenBookQA, ARC-Easy, ARC-Challenge
 
 ## 🚀 Training
