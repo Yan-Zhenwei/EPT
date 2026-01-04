@@ -1,0 +1,50 @@
+nohup: ignoring input
+[2025-11-27 05:00:53,305] [WARNING] [runner.py:232:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2025-11-27 05:00:53,306] [INFO] [runner.py:630:main] cmd = /home/phayi/anaconda3/envs/more/bin/python3.1 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=17621 --enable_each_rank_log=None --log_level=info /root/MoRE/finetune.py --model_name_or_path /root/data/t5-base --tasks cola mnli mrpc qnli qqp rte sst2 stsb --max_length 128 --use_lora True --lora_rank 8 --lora_alpha 32 --target_modules q k v o wi wo --expert_kernel_sizes 2 2 4 4 6 6 8 8 --moe_top_k 2 --output_dir ./save/MoRE_22446688_no_sum --eval_strategy steps --eval_steps 1000 --save_steps 1000 --save_total_limit 5 --num_train_epochs 1 --per_device_train_batch_size 128 --per_device_eval_batch_size 512 --gradient_accumulation_steps 1 --learning_rate 3e-4 --weight_decay 0.01 --warmup_steps 500 --logging_dir ./save/MoRE_22446688_no_sum/logs --logging_steps 100 --load_best_model_at_end True --dataloader_num_workers 16 --bf16 True --seed 2023
+[2025-11-27 05:00:56,621] [INFO] [launch.py:155:main] 0 NCCL_P2P_DISABLE=0
+[2025-11-27 05:00:56,621] [INFO] [launch.py:155:main] 0 NCCL_IB_DISABLE=0
+[2025-11-27 05:00:56,621] [INFO] [launch.py:162:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-11-27 05:00:56,621] [INFO] [launch.py:168:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-11-27 05:00:56,621] [INFO] [launch.py:179:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-11-27 05:00:56,621] [INFO] [launch.py:180:main] dist_world_size=1
+[2025-11-27 05:00:56,621] [INFO] [launch.py:184:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-11-27 05:00:56,622] [INFO] [launch.py:272:main] process 1802473 spawned with command: ['/home/phayi/anaconda3/envs/more/bin/python3.1', '-u', '/root/MoRE/finetune.py', '--local_rank=0', '--model_name_or_path', '/root/data/t5-base', '--tasks', 'cola', 'mnli', 'mrpc', 'qnli', 'qqp', 'rte', 'sst2', 'stsb', '--max_length', '128', '--use_lora', 'True', '--lora_rank', '8', '--lora_alpha', '32', '--target_modules', 'q', 'k', 'v', 'o', 'wi', 'wo', '--expert_kernel_sizes', '2', '2', '4', '4', '6', '6', '8', '8', '--moe_top_k', '2', '--output_dir', './save/MoRE_22446688_no_sum', '--eval_strategy', 'steps', '--eval_steps', '1000', '--save_steps', '1000', '--save_total_limit', '5', '--num_train_epochs', '1', '--per_device_train_batch_size', '128', '--per_device_eval_batch_size', '512', '--gradient_accumulation_steps', '1', '--learning_rate', '3e-4', '--weight_decay', '0.01', '--warmup_steps', '500', '--logging_dir', './save/MoRE_22446688_no_sum/logs', '--logging_steps', '100', '--load_best_model_at_end', 'True', '--dataloader_num_workers', '16', '--bf16', 'True', '--seed', '2023']
+Traceback (most recent call last):
+  File "/root/MoRE/transformers/utils/import_utils.py", line 1535, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/phayi/anaconda3/envs/more/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/root/MoRE/transformers/models/__init__.py", line 15, in <module>
+    from . import (
+  File "/root/MoRE/transformers/models/mt5/__init__.py", line 29, in <module>
+    from ..t5.tokenization_t5 import T5Tokenizer
+  File "/root/MoRE/transformers/models/t5/tokenization_t5.py", line 26, in <module>
+    from ...convert_slow_tokenizer import import_protobuf
+  File "/root/MoRE/transformers/convert_slow_tokenizer.py", line 26, in <module>
+    from tokenizers import AddedToken, Regex, Tokenizer, decoders, normalizers, pre_tokenizers, processors
+ModuleNotFoundError: No module named 'tokenizers'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/MoRE/finetune.py", line 2, in <module>
+    from transformers import T5Config, T5Tokenizer, T5ForConditionalGeneration, TrainingArguments, HfArgumentParser, Trainer
+  File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+  File "/root/MoRE/transformers/utils/import_utils.py", line 1525, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/root/MoRE/transformers/utils/import_utils.py", line 1537, in _get_module
+    raise RuntimeError(
+RuntimeError: Failed to import transformers.models.t5 because of the following error (look up to see its traceback):
+No module named 'tokenizers'
+[2025-11-27 05:00:59,625] [INFO] [launch.py:335:sigkill_handler] Killing subprocess 1802473
+[2025-11-27 05:00:59,625] [ERROR] [launch.py:341:sigkill_handler] ['/home/phayi/anaconda3/envs/more/bin/python3.1', '-u', '/root/MoRE/finetune.py', '--local_rank=0', '--model_name_or_path', '/root/data/t5-base', '--tasks', 'cola', 'mnli', 'mrpc', 'qnli', 'qqp', 'rte', 'sst2', 'stsb', '--max_length', '128', '--use_lora', 'True', '--lora_rank', '8', '--lora_alpha', '32', '--target_modules', 'q', 'k', 'v', 'o', 'wi', 'wo', '--expert_kernel_sizes', '2', '2', '4', '4', '6', '6', '8', '8', '--moe_top_k', '2', '--output_dir', './save/MoRE_22446688_no_sum', '--eval_strategy', 'steps', '--eval_steps', '1000', '--save_steps', '1000', '--save_total_limit', '5', '--num_train_epochs', '1', '--per_device_train_batch_size', '128', '--per_device_eval_batch_size', '512', '--gradient_accumulation_steps', '1', '--learning_rate', '3e-4', '--weight_decay', '0.01', '--warmup_steps', '500', '--logging_dir', './save/MoRE_22446688_no_sum/logs', '--logging_steps', '100', '--load_best_model_at_end', 'True', '--dataloader_num_workers', '16', '--bf16', 'True', '--seed', '2023'] exits with return code = 1
